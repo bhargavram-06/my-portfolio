@@ -23,7 +23,7 @@ const Footer = () => {
 
           {/* LinkedIn */}
           <a 
-            href="https://www.linkedin.com/in/pachila-bhargav-ram" 
+            href="https://www.linkedin.com/in/bhargav-ram-712a072b6/" 
             target="_blank" 
             rel="noreferrer" 
             className="text-secondary hover:text-neon-blue transition-all duration-300 hover:scale-125"
