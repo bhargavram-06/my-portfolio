@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* In v4, we use @theme to define our custom colors and animations directly */
+@theme {
+  --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030;
+  --color-neon-blue: #00f3ff;
+  --color-accent-blue: #0066ff;
+
+  --shadow-card: 0px 35px 120px -15px #211e35;
+  --shadow-neon: 0 0 20px rgba(0, 243, 255, 0.4), 0 0 40px rgba(0, 243, 255, 0.1);
+
+  /* Custom AI pulse animation */
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Global Styles */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-primary);
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Selection color to match neon theme */
+  ::selection {
+    background-color: rgba(0, 243, 255, 0.3);
+    color: white;
+  }
+}
+
+/* Custom Scrollbar - High Tech Style */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-neon-blue);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--color-neon-blue);
+}
+
+/* Text Gradients for Project Tags */
+.blue-text-gradient {
+  background: linear-gradient(to top, #2f80ed, #56ccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.green-text-gradient {
+  background: linear-gradient(to top, #38ef7d, #11998e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pink-text-gradient {
+  background: linear-gradient(to top, #fc6767, #ec008c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Specialized AI Grid Utilities */
+@layer utilities {
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+  }
+
+  .text-neon-shadow {
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+  }
+
+  /* Responsive clamping for project descriptions */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
