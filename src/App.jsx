@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import LockScreen from "./components/LockScreen"; // Importing your LockScreen component
+//import LockScreen from "./components/LockScreen"; // Importing your LockScreen component
 
 // Portfolio Section Component Imports
 import Navbar from "./components/Navbar";
