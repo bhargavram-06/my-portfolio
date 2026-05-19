@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
-//import LockScreen from "./components/LockScreen"; // Importing your LockScreen component
 
 // Portfolio Section Component Imports
 import Navbar from "./components/Navbar";
@@ -16,17 +15,6 @@ import Contact from "./components/sections/Contact";
 import Footer from "./components/Footer";
 
 const App = () => {
-  // Read token from localStorage to check if user has already unlocked it during this visit
-  const [isUnlocked, setIsUnlocked] = useState(() => {
-    return localStorage.getItem("portfolio_session_auth") === "true";
-  });
-
-  // Intercept routing immediately if the screen is locked
-  if (!isUnlocked) {
-    return <LockScreen onUnlocked={() => setIsUnlocked(true)} />;
-  }
-
-  // Once unlocked, run your fully structured portfolio application
   return (
     <BrowserRouter>
       {/* The "bg-hero-pattern" or a custom CSS class can be added to index.css 
