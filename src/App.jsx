@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react"; // Added useEffect here
 import { BrowserRouter } from "react-router-dom";
 
 // Portfolio Section Component Imports
@@ -15,11 +15,14 @@ import Contact from "./components/sections/Contact";
 import Footer from "./components/Footer";
 
 const App = () => {
+  // FORCE SCROLL RESET ON SITE LOAD
+  useEffect(() => {
+    // This tells the browser to instantly jump back to the top-left corner (0,0) on refresh
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
   return (
     <BrowserRouter>
-      {/* The "bg-hero-pattern" or a custom CSS class can be added to index.css 
-        to create the AI grid effect. I've added a relative wrapper here.
-      */}
       <div className="relative z-0 bg-primary w-full overflow-x-hidden">
         
         {/* Advanced AI Background Effect */}
@@ -28,8 +31,6 @@ const App = () => {
         </div>
 
         <Navbar />
-        
-        {/* Main Sections in Structured Order */}
         <Hero />
         
         <div className="relative z-0">

@@ -1,13 +1,51 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { projects } from "../../constants";
 import { fadeIn, textVariant } from "../../animations/motion";
+
+// Cleaned up and updated array with your new Capstone project added
+const projects = [
+  {
+    name: "EcoTrack AI Portal",
+    description: "An AI-powered environmental capstone platform aligned with UN SDG 13 for production-ready carbon footprint monitoring, predictive analytics, and automated compliance tracking.",
+    tags: [
+      { name: "Streamlit", color: "blue-text-gradient" },
+      { name: "Python", color: "green-text-gradient" },
+      { name: "Generative-AI", color: "pink-text-gradient" },
+      { name: "Predictive-Analytics", color: "orange-text-gradient" },
+    ],
+    source_code_link: "https://github.com/bhargavram-06/SDG13_EcoTrackAI_Capstone",
+    live_url: "https://carbontracker-ai.streamlit.app/"
+  },
+  {
+    name: "ML-Based Symptom Analyzer",
+    description: "An AI-powered healthcare application predicting 40+ diseases based on 133 symptoms and health care guidance.",
+    tags: [
+      { name: "react", color: "blue-text-gradient" },
+      { name: "mongodb", color: "green-text-gradient" },
+      { name: "Node.js", color: "pink-text-gradient"},
+      { name: "ML", color: "orange-text-gradient"},
+    ],
+    source_code_link: "https://github.com/bhargavram-06",
+    live_url: "https://symptom-analyzerr.netlify.app"
+  },
+  {
+    name: "Blood Donation Management",
+    description: "A centralized platform for managing blood requests and donor data efficiently with a MERN stack architecture.",
+    tags: [
+        { name: "HTML", color: "blue-text-gradient" },
+        { name: "mongodb", color: "green-text-gradient" },
+        { name: "Node.js", color: "pink-text-gradient" },
+    ],
+    source_code_link: "https://github.com/bhargavram-06",
+    live_url: "https://blooddonationmanagement.onrender.com"
+  },
+];
 
 const ProjectCard = ({ index, name, description, tags, source_code_link, live_url }) => {
   return (
     <motion.div 
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-      whileHover={{ y: -10 }} // Subtle floating lift on hover
+      whileHover={{ y: -10 }} 
     >
       <div className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full border border-white/5 hover:border-neon-blue/30 transition-all duration-300 flex flex-col h-full min-h-[320px] shadow-2xl relative group overflow-hidden'>
         

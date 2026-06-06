@@ -21,6 +21,7 @@ export const navLinks = [
   { id: "work", title: "Experience" },
   { id: "projects", title: "Projects" },
   { id: "credentials", title: "Credentials" },
+  { id: "terminal", title: "Console Terminal" },
   { id: "contact", title: "Contact" },
 ];
 
@@ -71,6 +72,18 @@ export const experiences = [
 
 export const projects = [
   {
+    name: "EcoTrack AI Portal",
+    description: "An AI-powered environmental capstone platform aligned with UN SDG 13 for production-ready carbon footprint monitoring, predictive analytics, and automated compliance tracking.",
+    tags: [
+      { name: "Streamlit", color: "blue-text-gradient" },
+      { name: "Python", color: "green-text-gradient" },
+      { name: "Generative-AI", color: "pink-text-gradient" },
+      { name: "Predictive-Analytics", color: "orange-text-gradient" },
+    ],
+    source_code_link: "https://github.com/bhargavram-06/SDG13_EcoTrackAI_Capstone",
+    live_url: "https://carbontracker-ai.streamlit.app/"
+  },
+  {
     name: "ML-Based Symptom Analyzer",
     description: "An AI-powered healthcare application predicting 40+ diseases based on 133 symptoms and health care guidance.",
     tags: [
@@ -101,6 +114,7 @@ export const internshipCertificates = [
   { title: "Long-Term Internship (Android & Data Science)", org: "APSCHE", file: "android longterm(edu).png" },
   { title: "Short-Term Internship (Google AI-ML)", org: "APSCHE", file: "aiml shortterm(edu).png" },
   { title: "Short-Term Internship (Android Developer)", org: "APSCHE", file: "android shortterm(edu).png" },
+  { title: "Internship (web development with HTML, CSS and JS)", org: "Apex Planet Software Pvt.Ltd", file: "internship on web(apex).png" },
 ];
 
 export const courseCertificates = [

@@ -16,7 +16,6 @@ const Terminal = () => {
   const terminalRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Dynamic commands map directly to your shared constants
   const COMMANDS = {
     help: "Available commands: about, skills, projects, contact, github, linkedin, clear",
     about: `${personalBio.name} — ${personalBio.role}.\n\n${personalBio.paragraph1}\n\n${personalBio.paragraph2}\n\n${personalBio.paragraph3}`,
@@ -81,7 +80,8 @@ const Terminal = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-10 relative z-10">
+    /* ADDED ID HERE FOR NAVBAR HASH ROUTING LINKING */
+    <section id="terminal" className="max-w-7xl mx-auto px-6 py-10 relative z-10">
       <motion.div variants={textVariant()}>
         <p className="text-secondary text-[16px] sm:text-[18px] font-mono tracking-widest uppercase">System Console</p>
         <h2 className="text-white font-black md:text-[60px] sm:text-[50px] text-[38px] tracking-tighter">Terminal.</h2>
@@ -128,7 +128,6 @@ const Terminal = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleCommand}
               className="bg-transparent border-none outline-none flex-1 text-white caret-neon-blue font-mono"
-              autoFocus
               spellCheck="false"
               autoComplete="off"
             />

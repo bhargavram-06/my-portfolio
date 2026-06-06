@@ -150,19 +150,43 @@ const Contact = () => {
             
             <div className="flex flex-col gap-8">
               {[
-                { icon: <AiOutlineMail />, label: "Email", value: "bhargavrampachila@gmail.com" },
-                { icon: <AiOutlinePhone />, label: "Phone", value: "+91 8341342605" },
-                { icon: <AiOutlineEnvironment />, label: "Base Location", value: "Visakhapatnam, India" }
+                { 
+                  icon: <AiOutlineMail />, 
+                  label: "Email", 
+                  value: "bhargavrampachila@gmail.com",
+                  href: "mailto:bhargavrampachila@gmail.com" 
+                },
+                { 
+                  icon: <AiOutlinePhone />, 
+                  label: "Phone", 
+                  value: "+91 8341342605",
+                  href: "tel:+918341342605" 
+                },
+                { 
+                  icon: <AiOutlineEnvironment />, 
+                  label: "Base Location", 
+                  value: "Visakhapatnam, India",
+                  href: "https://www.google.com/maps/search/?api=1&query=Visakhapatnam,+Andhra+Pradesh",
+                  isExternal: true
+                }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-5 group">
-                  <div className="w-12 h-12 rounded-xl bg-tertiary flex items-center justify-center text-neon-blue group-hover:bg-neon-blue group-hover:text-primary transition-all duration-300 shadow-lg">
+                <a 
+                  key={idx} 
+                  href={item.href}
+                  target={item.isExternal ? "_blank" : undefined}
+                  rel={item.isExternal ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-5 group w-fit cursor-pointer"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-tertiary flex items-center justify-center text-neon-blue group-hover:bg-neon-blue group-hover:text-primary transition-all duration-300 shadow-lg shrink-0">
                     {React.cloneElement(item.icon, { size: 24 })}
                   </div>
                   <div>
                     <p className="text-secondary text-[11px] font-mono uppercase tracking-[0.2em]">{item.label}</p>
-                    <p className="text-white font-semibold text-[14px] sm:text-[16px]">{item.value}</p>
+                    <p className="text-white font-semibold text-[14px] sm:text-[16px] group-hover:text-neon-blue transition-colors duration-300">
+                      {item.value}
+                    </p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
