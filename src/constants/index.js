@@ -211,14 +211,14 @@ export const projects = [
 
 // Refactored into unified, date-tracked achievement assets
 export const achievements = [
-  { title: "Runner Up - National AI Prompt War", org: "Unstop / Igniters Club", date: "2025", detail: "Ranked among top competitors nationwide in optimizing LLM logic frameworks." },
-  { title: "Database Management Systems Certification", org: "NPTEL / IIT Kharagpur", date: "Elite Grade", detail: "Advanced academic validation in complex SQL structures, optimization, and relational scaling." },
-  { title: "Introduction to Large Language Models", org: "NPTEL / IIT Madras", date: "Certified", detail: "Deep foundational training in transformer architectures, context embeddings, and tuning vectors." },
+  { title: "Runner Up - National AI Prompt War", org: "Unstop / Igniters Club", date: "2025", detail: "Ranked among top competitors nationwide in optimizing LLM logic frameworks.", file: "prompt war(unstop).png" },
+  { title: "Database Management Systems Certification", org: "NPTEL / IIT Kharagpur", date: "Elite Grade", detail: "Advanced academic validation in complex SQL structures, optimization, and relational scaling.",file: "DBMS(nptel).png" },
+  { title: "Introduction to Large Language Models", org: "NPTEL / IIT Madras", date: "Certified", detail: "Deep foundational training in transformer architectures, context embeddings, and tuning vectors.",file: "llm(nptel).png" },
 ];
 
 export const Hackathons = [
-  { title: "National Hackathon(DUHacks 5.0)", org: "Google Developer Groups", date: "2024", detail: "Engineered scalable minimum viable product over an intensive continuous development sprint." },
-  { title: "Devlynix hackathon", org: "Devlynix", date:"2026", detail: "Buildfolio is a proof-of-work portfolio generator that transforms GitHub activity into a professional portfolio website with dynamic themes, public sharing, and PDF export."} 
+  { title: "National Hackathon(DUHacks 5.0)", org: "Google Developer Groups", date: "2024", detail: "Engineered scalable minimum viable product over an intensive continuous development sprint.", file: "hackathon.png" },
+  { title: "Devlynix hackathon", org: "Devlynix", date:"2026", detail: "Buildfolio is a proof-of-work portfolio generator that transforms GitHub activity into a professional portfolio website with dynamic themes, public sharing, and PDF export.", file: "hacakthon(buildathon).png"} 
 ];
 
 export const industryTestimonials = [
