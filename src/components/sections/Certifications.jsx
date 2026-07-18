@@ -3,8 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { internshipCertificates, courseCertificates, eventCertificates, achievements, Hackathons } from "../../constants";
 import { fadeIn, textVariant } from "../../animations/motion";
 
-const CredentialCard = ({ title, org, file, date, detail, isHonor, index }) => {
-  const handleView = () => window.open(`${window.location.origin}/${file || ""}`, "_blank", "noopener,noreferrer");
+const CredentialCard = ({ title, org, file, date, detail, index }) => {
+  const handleView = () => {
+    if (file) {
+      // Handles both absolute external URLs and relative local public paths
+      const targetUrl = file.startsWith("http") ? file : `${window.location.origin}/${file}`;
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <motion.div
@@ -39,16 +45,38 @@ const CredentialCard = ({ title, org, file, date, detail, isHonor, index }) => {
         )}
       </div>
 
-      {!isHonor && (
-        <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-end relative z-10">
-          <button  
-            onClick={handleView}
-            className="text-neon-blue text-[12px] font-bold font-mono uppercase tracking-wider bg-neon-blue/5 border border-neon-blue/20 hover:bg-neon-blue hover:text-primary px-4 py-2 rounded-xl transition-all duration-300 cursor-pointer flex items-center gap-1 active:scale-95"
-          >
-            Launch Record
-          </button>
-        </div>
-      )}
+      {/* Action Footer Module: Dynamically active for all valid files/links */}
+      <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-end gap-2 relative z-10">
+        {file ? (
+          <>
+            {/* Direct Save Option */}
+            <a 
+              href={file.startsWith("http") ? file : `/${file}`}
+              download={file.split('/').pop()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 flex items-center justify-center text-secondary hover:text-neon-blue bg-white/5 border border-white/5 hover:border-neon-blue/20 rounded-xl transition-all duration-300 active:scale-90 cursor-pointer"
+              title="Download Asset"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </a>
+
+            {/* View Online Option */}
+            <button  
+              onClick={handleView}
+              className="text-neon-blue text-[11px] font-bold font-mono uppercase tracking-wider bg-neon-blue/5 border border-neon-blue/20 hover:bg-neon-blue hover:text-primary px-3.5 py-2 rounded-xl transition-all duration-300 cursor-pointer flex items-center gap-1 active:scale-95"
+            >
+              Launch Record
+            </button>
+          </>
+        ) : (
+          <span className="text-[10px] font-mono text-secondary/40 italic px-2 py-1">
+            Internal Validation Only
+          </span>
+        )}
+      </div>
     </motion.div>
   );
 };
@@ -57,7 +85,7 @@ const Certifications = () => {
   const [activeTab, setActiveTab] = useState("achievements");
 
   const tabs = [
-    { id: "achievements", label: "Core Honors", data: achievements, isHonor: true },
+    { id: "achievements", label: "Core Honors", data: achievements },
     { id: "internships", label: "Internships", data: internshipCertificates },
     { id: "courses", label: "Specializations", data: courseCertificates },
     { id: "hackathons", label: "Hackathons", data: Hackathons },
@@ -76,7 +104,7 @@ const Certifications = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`relative pb-4 px-3 font-mono text-xs uppercase font-bold tracking-wider transition-all duration-300 ${
+            className={`relative pb-4 px-3 font-mono text-xs uppercase font-bold tracking-wider transition-all duration-300 cursor-pointer ${
               activeTab === tab.id ? "text-neon-blue" : "text-secondary hover:text-white"
             }`}
           >
@@ -104,7 +132,6 @@ const Certifications = () => {
             <CredentialCard 
               key={`${activeTab}-${index}`} 
               index={index} 
-              isHonor={tabs.find(t => t.id === activeTab).isHonor} 
               {...cert} 
             />
           ))}
