@@ -14,7 +14,7 @@ const Footer = () => {
           <a 
             href="https://github.com/bhargavram-06" 
             target="_blank" 
-            rel="noreferrer" 
+            rel="noopener noreferrer" 
             className="text-secondary hover:text-neon-blue transition-all duration-300 hover:scale-125"
             aria-label="GitHub Profile"
           >
@@ -23,9 +23,9 @@ const Footer = () => {
 
           {/* LinkedIn */}
           <a 
-            href="https://www.linkedin.com/in/bhargav-ram-712a072b6/" 
+            href="https://linkedin.com/in/pachila-bhargav-ram" 
             target="_blank" 
-            rel="noreferrer" 
+            rel="noopener noreferrer" 
             className="text-secondary hover:text-neon-blue transition-all duration-300 hover:scale-125"
             aria-label="LinkedIn Profile"
           >
@@ -36,7 +36,7 @@ const Footer = () => {
           <a 
             href="https://leetcode.com/u/Bhargav_ram06/" 
             target="_blank" 
-            rel="noreferrer" 
+            rel="noopener noreferrer" 
             className="text-secondary hover:text-neon-blue transition-all duration-300 hover:scale-125"
             aria-label="LeetCode Profile"
           >
@@ -47,7 +47,7 @@ const Footer = () => {
           <a 
             href="https://www.codechef.com/users/bhargavrampach" 
             target="_blank" 
-            rel="noreferrer" 
+            rel="noopener noreferrer" 
             className="text-secondary hover:text-neon-blue transition-all duration-300 hover:scale-125"
             aria-label="CodeChef Profile"
           >

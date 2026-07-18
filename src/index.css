@@ -22,35 +22,172 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    color-scheme: dark;
   }
 
+  html {
+    color-scheme: dark;
+    background-color: #050816;
+  }
+  
   body {
-    background-color: var(--color-primary);
+    background-color: #050816;
     color: white;
     overflow-x: hidden;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Selection color to match neon theme */
+  /* ==========================================
+      PREMIUM LIGHT THEME OVERRIDES (CYBER-CHALK)
+     ========================================== */
+  html.light {
+    color-scheme: light;
+    background-color: #f8fafc; /* Crisp, premium slate-white background */
+  }
+
+  html.light body {
+    background-color: #f8fafc;
+    color: #0f172a; /* Deep Slate Navy text */
+  }
+
+  /* Reset layout containers */
+  html.light .bg-primary {
+    background-color: #f8fafc !important;
+  }
+
+  /* FIXING THE SKY BLUE FOR LIGHT MODE: Turn it into a deep premium royal indigo */
+  html.light .text-neon-blue,
+  html.light span.text-neon-blue,
+  html.light .text-neon-blue\/90 {
+    color: #4f46e5 !important; /* Premium High-Contrast Indigo */
+    text-shadow: none !important; /* Remove neon glows in light mode */
+  }
+
+  /* Make sure titles stay dark slate */
+  html.light .text-white,
+  html.light h1, html.light h2, html.light h3, html.light h4, html.light h5 {
+    color: #0f172a !important;
+  }
+
+  /* Subtext adjustments for clean contrast */
+  html.light .text-secondary,
+  html.light p {
+    color: #334155 !important; /* Sharp corporate blue-grey text */
+  }
+
+  /* High contrast logo & navigation logic override */
+  html.light .light-logo-sub {
+    color: #64748b !important;
+  }
+  html.light .light-nav-text a {
+    color: #475569 !important;
+  }
+  html.light .light-nav-text:hover a {
+    color: #0f172a !important;
+  }
+  html.light .light-nav {
+    background-color: rgba(248, 250, 252, 0.95) !important;
+  }
+
+  /* Premium Card System Overhaul for Light Mode */
+  html.light .bg-tertiary,
+  html.light .bg-tertiary\/40,
+  html.light .light-bg-card,
+  html.light .bg-white\/5 {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02), 0 8px 10px -6px rgba(15, 23, 42, 0.02) !important;
+  }
+
+  /* Fix for metric boxes within cards in Light Mode */
+  html.light .bg-primary\/40 {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Interactive Form Inputs Clarity */
+  html.light input, html.light textarea {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+  html.light input:focus, html.light textarea:focus {
+    border-color: #4f46e5 !important; /* Indigo accent on focus */
+  }
+  html.light input::placeholder, html.light textarea::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  /* Toggle Button and UI Helpers adjustments for Light Mode */
+  html.light .light-border {
+    border-color: rgba(15, 23, 42, 0.08) !important;
+  }
+  html.light .light-toggle-bg {
+    background-color: #e2e8f0 !important;
+    border-color: #cbd5e1 !important;
+  }
+  html.light .light-mobile-btn {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+  
+  /* Buttons override: make them pop beautifully in Light Mode */
+  html.light button.bg-neon-blue {
+    background-color: #4f46e5 !important; /* Premium Indigo Button background */
+    color: #ffffff !important; /* White text instead of dark primary */
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3) !important;
+  }
+  html.light button.bg-neon-blue:hover {
+    background-color: #0f172a !important; /* Dark Slate on Hover */
+  }
+
+  /* Custom utility rules for floating element state alignment */
+  html.light .html-light-btn {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+  }
+
+  html.light .html-light-btn:hover {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+  }
+
+  /* KEEP TERMINAL DARK IN BOTH MODES FOR HIGH-TECH CONTRAST */
+  html.light #terminal .bg-black\/90 {
+    background-color: rgba(5, 8, 22, 0.98) !important;
+    border-color: #00f3ff !important;
+  }
+  html.light #terminal h2, html.light #terminal .text-white\/60 {
+    color: #ffffff !important;
+  }
+  html.light #terminal .text-neon-blue {
+    color: #00f3ff !important; /* Keep sky blue inside the console box only */
+  }
+
+  /* Selection highlight adjustment */
   ::selection {
-    background-color: rgba(0, 243, 255, 0.3);
-    color: white;
+    background-color: rgba(79, 70, 229, 0.2);
+    color: #0f172a;
   }
 }
 
-/* Custom Scrollbar - High Tech Style */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-primary);
+  background: #050816;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-neon-blue);
+  background: #00f3ff;
   border-radius: 10px;
-  box-shadow: 0 0 10px var(--color-neon-blue);
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #4f46e5;
 }
 
 /* Text Gradients for Project Tags */
@@ -72,6 +209,12 @@
   -webkit-text-fill-color: transparent;
 }
 
+.orange-text-gradient {
+  background: linear-gradient(to top, #f857a6, #ff5858);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Specialized AI Grid Utilities */
 @layer utilities {
   .bg-grid-pattern {
@@ -85,7 +228,6 @@
     text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
   }
 
-  /* Responsive clamping for project descriptions */
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -93,7 +235,6 @@
     overflow: hidden;
   }
 
-  /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

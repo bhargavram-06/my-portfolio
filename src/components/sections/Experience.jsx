@@ -6,17 +6,13 @@ import { fadeIn, textVariant } from "../../animations/motion";
 const ExperienceCard = ({ experience, index }) => {
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.3, 0.75)} // Reduced delay for smoother feel
+      variants={fadeIn("up", "spring", index * 0.3, 0.75)}
       className="relative pl-8 pb-12 border-l-2 border-neon-blue/20 last:pb-0"
     >
-      {/* Timeline Dot with Pulse Effect */}
       <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary border-2 border-neon-blue shadow-[0_0_10px_rgba(0,255,255,0.8)] z-10" />
-      
-      {/* Connector Line Glow */}
       <div className="absolute left-[-2px] top-0 bottom-0 w-[2px] bg-neon-blue/10 -z-0" />
 
       <div className="bg-tertiary p-6 rounded-2xl border border-white/5 hover:border-neon-blue/30 transition-all duration-300 shadow-xl group overflow-hidden">
-        {/* Subtle hover glow inside card */}
         <div className="absolute inset-0 bg-neon-blue/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
         <div className="relative z-10 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
@@ -40,7 +36,6 @@ const ExperienceCard = ({ experience, index }) => {
               key={`experience-point-${idx}`}
               className="text-secondary/80 text-[13px] sm:text-[14px] flex items-start gap-3 leading-relaxed"
             >
-              {/* Custom Bullet Icon */}
               <span className="text-neon-blue mt-1.5 min-w-[6px] h-[6px] rounded-full bg-neon-blue shadow-neon" />
               {point}
             </li>

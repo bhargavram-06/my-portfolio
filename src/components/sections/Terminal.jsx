@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { textVariant } from "../../animations/motion";
-import { personalBio, services, technologies, projects } from "../../constants";
+import { personalBio, services, technicalSkills, projects } from "../../constants";
 
 const Terminal = () => {
   const [input, setInput] = useState("");
@@ -19,8 +19,8 @@ const Terminal = () => {
   const COMMANDS = {
     help: "Available commands: about, skills, projects, contact, github, linkedin, clear",
     about: `${personalBio.name} — ${personalBio.role}.\n\n${personalBio.paragraph1}\n\n${personalBio.paragraph2}\n\n${personalBio.paragraph3}`,
-    skills: `Core Tracks: ${services.map(s => s.title).join(", ")}\n\nTech Arsenal: ${technologies.map(t => t.name).join(", ")}`,
-    projects: projects.map((p, idx) => `${idx + 1}. ${p.name}: ${p.description}\n   Live URL: ${p.live_url}`).join("\n\n"),
+    skills: `Core Tracks:\n- ${services.map(s => s.title).join("\n- ")}\n\nTech Arsenal:\n- Frontend: ${technicalSkills.frontend.map(f => f.name).join(", ")}\n- Backend: ${technicalSkills.backend.map(b => b.name).join(", ")}\n- AI/ML: ${technicalSkills.aiMl.map(a => a.name).join(", ")}\n- Tools: ${technicalSkills.tools.map(t => t.name).join(", ")}`,
+    projects: projects.map((p, idx) => `${idx + 1}. ${p.name} [${p.userCount || 'Active'}]\n   Description: ${p.description}\n   Metrics: ${p.metrics}\n   Highlights:\n   • ${p.points.join("\n   • ")}\n   Live URL: ${p.live_url}`).join("\n\n"),
     contact: `Email: ${personalBio.email} | Base Location: ${personalBio.location}.\nFeel free to drop a line using the form below!`,
     github: `Redirecting to GitHub: ${personalBio.github}`,
     linkedin: `Redirecting to LinkedIn: ${personalBio.linkedin}`,
@@ -80,7 +80,6 @@ const Terminal = () => {
   };
 
   return (
-    /* ADDED ID HERE FOR NAVBAR HASH ROUTING LINKING */
     <section id="terminal" className="max-w-7xl mx-auto px-6 py-10 relative z-10">
       <motion.div variants={textVariant()}>
         <p className="text-secondary text-[16px] sm:text-[18px] font-mono tracking-widest uppercase">System Console</p>
@@ -91,7 +90,6 @@ const Terminal = () => {
         onClick={focusInput}
         className="mt-10 w-full max-w-4xl mx-auto bg-black/90 rounded-xl border border-neon-blue/20 overflow-hidden shadow-[0_0_30px_rgba(0,255,255,0.1)] group cursor-text"
       >
-        {/* Terminal Header */}
         <div className="bg-white/5 px-4 py-3 flex items-center justify-between border-b border-white/5 select-none">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
@@ -102,7 +100,6 @@ const Terminal = () => {
           <div className="w-10" />
         </div>
 
-        {/* Terminal Window Box */}
         <div 
           ref={terminalRef}
           className="p-5 h-[350px] sm:h-[450px] overflow-y-auto font-mono text-sm sm:text-base scrollbar-thin scrollbar-thumb-neon-blue/20"
@@ -118,7 +115,6 @@ const Terminal = () => {
             </motion.div>
           ))}
           
-          {/* Active Prompt Line */}
           <div className="flex items-center mt-3 text-emerald-400">
             <span className="font-bold mr-2 select-none">guest@bhargav:~$</span>
             <input
