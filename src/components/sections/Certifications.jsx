@@ -68,7 +68,7 @@ const CredentialCard = ({ title, org, file, date, detail, index }) => {
               onClick={handleView}
               className="text-neon-blue text-[11px] font-bold font-mono uppercase tracking-wider bg-neon-blue/5 border border-neon-blue/20 hover:bg-neon-blue hover:text-primary px-3.5 py-2 rounded-xl transition-all duration-300 cursor-pointer flex items-center gap-1 active:scale-95"
             >
-              Launch Record
+              view
             </button>
           </>
         ) : (

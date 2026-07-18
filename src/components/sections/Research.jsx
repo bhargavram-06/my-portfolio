@@ -77,7 +77,7 @@ const ResearchCard = ({ title, type, file, abstract, metrics, finding, impact, i
       rel="noreferrer"
       className="w-full relative z-10 py-3.5 rounded-xl border border-neon-blue/40 text-neon-blue font-bold hover:bg-neon-blue hover:text-primary transition-all flex justify-center items-center gap-2 text-[14px] font-mono uppercase tracking-wider bg-neon-blue/5 shadow-md active:scale-[0.98]"
     >
-      <AiOutlineFilePdf size={18} /> Compile Document View
+      <AiOutlineFilePdf size={18} /> View
     </a>
   </motion.div>
 );
