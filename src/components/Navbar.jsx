@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { navLinks } from "../constants";
+import ThemeToggle from "./ThemeToggle"; 
 
-const Navbar = ({ currentTheme, onThemeToggle }) => {
+const Navbar = () => {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,121 +16,89 @@ const Navbar = ({ currentTheme, onThemeToggle }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { id: "about", title: "About" },
+    { id: "experience", title: "Experience" },
+    { id: "skills", title: "Skills" },
+    { id: "projects", title: "Projects" },
+    { id: "credentials", title: "Credentials" },
+  ];
+
   return (
     <nav
-      className={`w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
-        scrolled ? "bg-primary/90 dark:bg-primary/90 light-nav backdrop-blur-lg border-b border-white/5 light-border" : "bg-transparent"
+      className={`w-full flex items-center py-4 fixed top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-primary/95 backdrop-blur-md border-b border-white/5 shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto px-6">
-        {/* Logo Section */}
+      <div className="w-full max-w-7xl mx-auto flex justify-between items-center px-6 gap-4">
+        
+        {/* Branding/Logo Area */}
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 select-none shrink-0"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <p className="text-neon-blue text-[18px] font-bold cursor-pointer flex tracking-wider uppercase">
-            Bhargav &nbsp;
-            <span className="text-white dark:text-white light-logo-sub text-white font-light">| AI Developer</span>
+          <p className="text-white text-[18px] font-bold tracking-tight flex items-center whitespace-nowrap">
+            <span className="text-neon-blue font-black uppercase mr-1.5">Bhargav</span>
+            <span className="text-secondary/40 font-normal mr-1.5 text-[15px]">|</span>
+            <span className="text-secondary text-[14px] font-mono tracking-wider uppercase hidden sm:inline-block">AI Developer</span>
           </p>
         </Link>
 
-        {/* Navigation Actions Group */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        {/* Action Controls & Navigation Links */}
+        <div className="flex items-center gap-6 lg:gap-8">
           
-          {/* UPGRADED: HIGH-TECH SUN/MOON INTERACTIVE TOGGLE */}
-          <button 
-            onClick={onThemeToggle}
-            className="w-20 h-9 rounded-full bg-tertiary border border-white/10 light-toggle-bg flex items-center p-1 cursor-pointer relative shadow-inner transition-colors duration-300"
-            title="Toggle Core System Environment"
-            aria-label="Theme Toggle Button"
-          >
-            {/* Animated sliding switch bubble */}
-            <motion.div 
-              layout
-              className="w-7 h-7 rounded-full bg-neon-blue shadow-[0_0_15px_#00f3ff] flex items-center justify-center z-10"
-              animate={{ x: currentTheme === "dark" ? 42 : 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            >
-              {currentTheme === "dark" ? (
-                // Dark Mode Icon (Moon)
-                <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              ) : (
-                // Light Mode Icon (Sun)
-                <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              )}
-            </motion.div>
-            
-            {/* Background mode markers */}
-            <span className="absolute left-3 text-[9px] font-mono font-bold text-secondary dark:text-secondary pointer-events-none select-none">SYS</span>
-            <span className="absolute right-3 text-[9px] font-mono font-bold text-neon-blue pointer-events-none select-none">Core</span>
-          </button>
-
-          {/* Desktop Navigation Links */}
-          <ul className="list-none hidden sm:flex flex-row gap-8">
+          {/* Main Desktop Navigation Menu */}
+          <ul className="list-none hidden md:flex flex-row gap-6 lg:gap-8 items-center">
             {navLinks.map((link) => (
               <li
                 key={link.id}
                 className={`${
-                  active === link.title ? "text-neon-blue font-bold" : "text-secondary"
-                } hover:text-white dark:hover:text-white light-nav-text text-[15px] font-mono uppercase tracking-wider font-medium cursor-pointer transition-all hover:translate-y-[-1px] relative py-1`}
+                  active === link.title ? "text-neon-blue font-bold" : "text-secondary hover:text-white"
+                } text-[14px] font-mono uppercase tracking-wider transition-colors duration-300 cursor-pointer`}
                 onClick={() => setActive(link.title)}
               >
                 <a href={`#${link.id}`}>{link.title}</a>
-                {active === link.title && (
-                  <motion.div 
-                    layoutId="navbarGlowLine"
-                    className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-neon-blue shadow-[0_0_8px_rgba(0,255,255,0.8)]"
-                  />
-                )}
               </li>
             ))}
           </ul>
-        </div>
 
-        {/* Mobile Navigation Toggle */}
-        <div className="sm:hidden flex flex-1 justify-end items-center">
-          <button
-            className="w-8 h-8 flex flex-col justify-between items-center p-1.5 z-50 cursor-pointer rounded-lg bg-white/5 border border-white/10 light-mobile-btn active:scale-90 transition-transform"
-            onClick={() => setToggle(!toggle)}
-            aria-label="Toggle Navigation Menu"
-          >
-            <span className={`block h-0.5 w-full bg-neon-blue rounded-full transition-all duration-300 ${toggle ? "rotate-45 translate-y-1.5" : ""}`} />
-            <span className={`block h-0.5 w-full bg-neon-blue rounded-full transition-all duration-300 ${toggle ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-full bg-neon-blue rounded-full transition-all duration-300 ${toggle ? "-rotate-45 -translate-y-1.5" : ""}`} />
-          </button>
-
-          {/* Mobile Menu Content Sidebar */}
-          <div
-            className={`${
-              !toggle ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"
-            } p-8 bg-primary/95 dark:bg-primary/95 light-bg-card backdrop-blur-2xl fixed top-0 right-0 w-2/3 h-screen z-40 border-l border-white/10 dark:border-white/10 light-border flex flex-col items-start gap-8 pt-24 transition-all duration-300 shadow-2xl`}
-          >
-            <ul className="list-none flex flex-col gap-6 w-full">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={`font-mono font-bold uppercase tracking-widest cursor-pointer text-[15px] border-b border-white/5 dark:border-white/5 light-border pb-3 transition-all active:scale-[0.98] w-full ${
-                    active === link.title ? "text-neon-blue pl-2" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(false);
-                    setActive(link.title);
-                  }}
-                >
-                  <a href={`#${link.id}`} className="block w-full">{link.title}</a>
-                </li>
-              ))}
-            </ul>
+          {/* Social Links Panel (Quick Access) */}
+          <div className="hidden sm:flex items-center gap-4 border-r border-white/10 pr-4">
+            <a 
+              href="https://www.linkedin.com/in/bhargav-ram-712a072b6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-neon-blue transition-colors duration-300"
+              title="LinkedIn Profile"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://github.com/bhargavram-06"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-neon-blue transition-colors duration-300"
+              title="GitHub Profile"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
+
+          {/* Theme Engine Switcher */}
+          <div className="flex items-center shrink-0">
+            <ThemeToggle />
+          </div>
+
         </div>
+
       </div>
     </nav>
   );
