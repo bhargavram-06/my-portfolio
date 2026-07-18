@@ -10,7 +10,7 @@ export const personalBio = {
   location: "Visakhapatnam, India",
   email: "bhargavrampachila@gmail.com",
   github: "https://github.com/bhargavram-06",
-  linkedin: "https://linkedin.com/in/bhargav-ram-712a072b6",
+  linkedin: "https://www.linkedin.com/in/bhargav-ram-712a072b6",
   paragraph1: "I am a performance-driven developer specialized in architecting responsive web applications and embedding intelligent machine learning workflows. My expertise spans both frontend design topologies and resilient backend architectures, with a core focus on designing high-throughput, secure software systems.",
   paragraph2: "What drives my engineering process is transforming theoretical models into robust, production-grade applications. I bridge the gap between full-stack frameworks and real-time artificial intelligence to build systems that are context-aware, computationally efficient, and user-centric.",
   paragraph3: "Currently pursuing my final year B.Tech in CSE (AI), I continuously test, deploy, and scale data-driven software solutions while looking for high-impact engineering opportunities to collaborate, build, and optimize digital infrastructure."
